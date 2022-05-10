@@ -1,14 +1,33 @@
 import os
-from setuptools import setup, find_packages
+import re
+
+from setuptools import find_packages, setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 
+def get_version(*file_paths):
+    """
+    Extract the version string from the file at the given relative path fragments.
+    """
+    filename = os.path.join(os.path.dirname(__file__), *file_paths)
+    with open(filename, encoding='utf-8') as opened_file:
+        version_file = opened_file.read()
+        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+                                  version_file, re.M)
+    if version_match:
+        return version_match.group(1)
+    raise RuntimeError('Unable to find version string.')
+
+
+VERSION = get_version("multi_email_field", "__init__.py")
+
+
 setup(
     name='django-multi-email-field',
-    version='0.6.2',
+    version=VERSION,
     author='Florent Lebreton',
     author_email='florent.lebreton@makina-corpus.com',
-    url='https://github.com/fle/django-multi-email-field',
+    url='https://github.com/openedx/django-multi-email-field',
     description="Provides a model field and a form field to manage list of e-mails",
     long_description=open(os.path.join(here, 'README.rst')).read() + '\n\n' +
         open(os.path.join(here, 'CHANGES')).read(),
@@ -24,15 +43,10 @@ setup(
         'Intended Audience :: Developers',
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.11',
-        'Framework :: Django :: 2.2',
-        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.0',
         'Development Status :: 5 - Production/Stable',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
 )

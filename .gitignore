@@ -6,3 +6,5 @@ htmlcov
 # distribution
 dist
 *.egg-info
+
+build/

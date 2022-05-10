@@ -1,4 +1,4 @@
-|build| |coverage| |pypi|
+|ci-badge| |coverage| |pypi|
 
 Field and widget to store a list of e-mail addresses in a `Django <https://www.djangoproject.com>`_ project.
 
@@ -11,8 +11,8 @@ It provides:
 COMPATIBILITY
 ==================
 
-* Python 2.7 and 3.5+
-* Django 1.8+, 2.0+ and 3.0+
+* Python 3.8
+* Django 3.2 and 4.0
 
 ==================
 INSTALL
@@ -63,21 +63,18 @@ If you want to store a list of e-mails, you can use this:
     class ContactModel(models.Model):
         emails = MultiEmailField()
 
-
 ==================
 AUTHORS
 ==================
 
     * Created by `Florent Lebreton <https://github.com/fle/>`_
-    * Maintained by `Makina Corpus <https://github.com/makinacorpus/>`_
+    * Maintained by Openedx
 
-|makinacom|_
 
-.. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
-.. |coverage| image:: https://coveralls.io/repos/github/fle/django-multi-email-field/badge.svg?branch=master
-    :target: https://coveralls.io/github/fle/django-multi-email-field?branch=master
-.. |pypi| image:: https://pypip.in/v/django-multi-email-field/badge.png
-    :target: https://crate.io/packages/django-multi-email-field/
-.. |build| image:: https://travis-ci.org/fle/django-multi-email-field.svg?branch=master
-    :target: https://travis-ci.org/fle/django-multi-email-field
-.. _makinacom:  http://www.makina-corpus.com
+.. |coverage| image:: https://img.shields.io/codecov/c/github/openedx/django_multi_email_field
+    :target: https://codecov.io/gh/openedx/django-multi-email-field?branch=master
+.. |pypi| image:: https://img.shields.io/pypi/v/dj_multi_email_field.svg
+    :target: https://pypi.python.org/pypi/dj_multi_email_field/
+.. |ci-badge| image:: https://github.com/openedx/django-multi-email-field/workflows/Python%20CI/badge.svg?branch=master
+    :target: https://github.com/openedx/django-multi-email-field/actions?query=workflow%3A%22Python+CI%22
+    :alt: CI
